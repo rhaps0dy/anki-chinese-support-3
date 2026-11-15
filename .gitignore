@@ -24,3 +24,6 @@ chinese/data/db
 !chinese/data/db/update.py
 !chinese/data/db/COPYING.txt
 !chinese/data/db/chinese.db
+collection.media/
+uv.lock
+.venv

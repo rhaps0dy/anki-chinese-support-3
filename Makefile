@@ -15,19 +15,19 @@
 
 PROJECT_SHORT = chinese
 PROJECT_LONG = chinese-support-3
-VERSION = 0.17.1
+VERSION = 0.17.2
 XDG_DATA_HOME ?= $(HOME)/Library/Application\ Support
 ADDON_PATH = "$(XDG_DATA_HOME)/Anki2/addons21/$(PROJECT_LONG)"
 ZIP_NAME = $(PROJECT_LONG).ankiaddon
+UV = uv
 
 all: test prep pack clean
 
 install: prep pack extract clean
 
 test:
-	pipenv install --dev
-	pipenv run pytest tests -v
-	coverage report -m --omit="*/lib/*,*/tests/*"
+	$(UV) run coverage run --omit="*/lib/*,*/tests/*" -m pytest tests -v
+	$(UV) run coverage report -m --omit="*/lib/*,*/tests/*"
 
 prep:
 	rm -f $(ZIP_NAME)
@@ -44,7 +44,7 @@ prep:
 	git checkout chinese/data/db/chinese.db
 
 pack:
-	pipenv install --dev
+	$(UV) run python ./convert-readme.py
 	(cd $(PROJECT_SHORT) && zip -r ../$(ZIP_NAME) *)
 	zip -d $(ZIP_NAME) ./data/db\* \*.DS_Store
 	mkdir -p data/db
@@ -53,7 +53,6 @@ pack:
 	cp -p chinese/data/db/update.py data/db
 	zip -ur $(ZIP_NAME) data/db
 	rm -rf data
-	pipenv run ./convert-readme.py
 
 extract:
 	rm -rf "$(ADDON_PATH)"
