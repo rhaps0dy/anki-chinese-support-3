@@ -32,6 +32,7 @@ from .fill import (
     bulk_fill_hanzi,
     bulk_fill_silhouette,
     bulk_fill_sound,
+    bulk_fill_stroke_order,
     bulk_fill_transcript,
     bulk_fill_usage,
 )
@@ -80,6 +81,7 @@ def load_menu():
     add_menu_item('Chinese::Bulk Fill', ('Classifiers'), bulk_fill_classifiers)
     add_menu_item('Chinese::Bulk Fill', ('Sound'), bulk_fill_sound)
     add_menu_item('Chinese::Bulk Fill', ('Silhouette'), bulk_fill_silhouette)
+    add_menu_item('Chinese::Bulk Fill', ('Stroke order'), bulk_fill_stroke_order)
     add_menu_item('Chinese::Bulk Fill', ('Frequency'), bulk_fill_frequency)
     add_menu_item('Chinese::Bulk Fill', ('Usage'), bulk_fill_usage)
     add_menu_item('Chinese::Bulk Fill', ('All'), bulk_fill_all)

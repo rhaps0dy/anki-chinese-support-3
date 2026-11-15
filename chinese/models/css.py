@@ -17,6 +17,7 @@ style = u'''\
 .tags {color:gray;text-align:right;font-size:10pt;}
 .note {color:gray;font-size:12pt;margin-top:20pt;}
 .hint {font-size:12pt;}
+.stroke-order-img {width: 100%; max-width: 540px; height: auto;}
 .answer { background-color:bisque; border:dotted;border-width:1px}
 
 .tone1 {color: red;}

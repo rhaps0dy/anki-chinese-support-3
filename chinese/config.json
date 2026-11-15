@@ -1,6 +1,6 @@
 {
     "firstRun": true,
-    "version": "0.17.1",
+    "version": "0.17.2",
     "enabledModels": [],
     "speech": "google|zh-CN",
     "target": "pinyin",
@@ -161,6 +161,10 @@
         ],
         "silhouette": [
             "Silhouette"
+        ],
+        "strokeOrder": [
+            "Stroke order",
+            "Stroke Order"
         ],
         "frequency": [
             "Frequency"

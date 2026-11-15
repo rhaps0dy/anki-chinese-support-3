@@ -19,6 +19,7 @@ fields_list = [
     'Also Written',
     'Frequency',
     'Silhouette',
+    'Stroke order',
     'Sound',
 ]
 
@@ -46,7 +47,8 @@ card_back = '''\
 {{#Simplified}}<div class=chinese><span class=comment>Simplified:</span> {{Simplified}}</div>{{/Simplified}}
 {{#Traditional}}<div class=chinese><span class=comment>Traditional:</span> {{Traditional}}</div>{{/Traditional}}
 {{#Classifier}}<div class=chinese><span class=comment>Classifier:</span> {{Classifier}}</div>{{/Classifier}}
-{{#Also Written}}<div class=chinese><span class=comment>Also written:</span> {{Also Written}}</div>{{/Also Written}}<!-- {{Sound}}-->
+{{#Also Written}}<div class=chinese><span class=comment>Also written:</span> {{Also Written}}</div>{{/Also Written}}
+{{#Stroke order}}<div class="stroke-order">{{Stroke order}}</div>{{/Stroke order}}<!-- {{Sound}}-->
 </div>
 
 <div class=comment> <!-- Word lookup -->

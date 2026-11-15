@@ -133,6 +133,14 @@ def fill_all_defs(hanzi, note):
     return n_filled
 
 
+def fill_stroke_order(hanzi, note):
+    from .strokeorder import get_stroke_order
+
+    m = get_stroke_order(hanzi)
+    if m:
+        set_all(config['fields']['strokeOrder'], note, to=m)
+
+
 def fill_silhouette(hanzi, note):
     m = get_silhouette(hanzi)
     set_all(config['fields']['silhouette'], note, to=m)
@@ -354,6 +362,7 @@ def update_fields(note, focus_field, fields):
             fill_frequency(hanzi, copy)
             fill_all_rubies(hanzi, copy)
             fill_silhouette(hanzi, copy)
+            fill_stroke_order(hanzi, copy)
             fill_usage(hanzi, copy)
         else:
             erase_fields(copy, config.get_fields())

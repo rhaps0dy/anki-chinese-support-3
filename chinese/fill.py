@@ -32,6 +32,7 @@ from .behavior import (
     fill_color,
     fill_frequency,
     fill_silhouette,
+    fill_stroke_order,
     fill_simp,
     fill_sound,
     fill_trad,
@@ -438,6 +439,50 @@ def bulk_fill_silhouette():
             mw.progress.update(label=msg, value=i)
             hanzi = get_first(config['fields']['hanzi'], copy)
             fill_silhouette(hanzi, copy)
+            n_updated = save_note(note, copy)
+
+    msg = '''
+    <b>Update complete!</b> %(hanzi)s<br>
+    <b>Updated:</b> %(filled)d notes''' % {
+        'hanzi': get_hanzi(copy),
+        'filled': n_updated,
+    }
+    mw.progress.finish()
+    showInfo(msg)
+
+
+def bulk_fill_stroke_order():
+    prompt = PROMPT_TEMPLATE.format(
+        field_names='<i>stroke order</i>',
+        extra_info=(
+            '<div>Stroke data for new characters is downloaded from the'
+            ' internet and cached locally.</div>'
+        ),
+    )
+
+    if not askUser(prompt):
+        return
+
+    d_has_fields = 0
+    n_updated = 0
+
+    note_ids = mw.col.find_notes('deck:current')
+    mw.progress.start(immediate=True, min=0, max=len(note_ids))
+
+    for i, nid in enumerate(note_ids):
+        note = mw.col.get_note(nid)
+        copy = dict(note)
+        if has_any_field(copy, config['fields']['strokeOrder']):
+            d_has_fields += 1
+            msg = '''
+            <b>Processing:</b> %(hanzi)s<br>
+            <b>Updated:</b> %(filled)d''' % {
+                'hanzi': get_hanzi(copy),
+                'filled': n_updated,
+            }
+            mw.progress.update(label=msg, value=i)
+            hanzi = get_first(config['fields']['hanzi'], copy)
+            fill_stroke_order(hanzi, copy)
             n_updated = save_note(note, copy)
 
     msg = '''

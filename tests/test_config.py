@@ -112,6 +112,8 @@ class Config(Base):
             '註音符號',
             '量詞',
             '量词',
+            'Stroke order',
+            'Stroke Order',
             'Simplified Classifier',
             'Simplified Measure Word',
             '繁体量詞',
